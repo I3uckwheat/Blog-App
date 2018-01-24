@@ -1,5 +1,6 @@
 mongoose = require("mongoose")
 mongoose.connect("mongodb://localhost/blog")
+mongoose.Promise = global.Promise;
 
   const Post = mongoose.model("Blog", new mongoose.Schema({
     title: String,
@@ -9,15 +10,14 @@ mongoose.connect("mongodb://localhost/blog")
   }));
 
 module.exports = {
-  newPost(title, body, author){
-    const post = new Post({
-      title,
-      author,
-      body
-    })
-    post.save((err, post) => {
-      if(err) console.error(err)
-    })
-    return post.id
+  newPost(req, res, next){
+    post = new Post ({
+      title: req.params.postTitle,
+      author: req.params.postAuthor,
+      body: req.params.postBody
+       })
+    post.save()
+    req.postId = post["_id"];
+    next();
   }
 }

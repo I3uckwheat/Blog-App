@@ -14,13 +14,12 @@ router.get('/new', function(req, res){
 })
 
 router.get('/:id', function(req, res) {
-  res.send(req.params.id) //to test
+  res.send(req.params)
 });
 
-router.post('/', function(req, res) {
-  const something = post.newPost(req.body.postTitle, req.body.postBody, req.body.postAuthor)
-  res.send(something)
-  // res.render(`posts/index/${id}`)
+router.post('/', post.newPost, function(req, res) {
+  console.log(req.params)
+  res.send(req.postId)
 });
 
 router.get('/:id/edit', function(req, res) {
@@ -28,7 +27,7 @@ router.get('/:id/edit', function(req, res) {
 });
 
 router.put('/:id', function(req, res) {
-  //update post
+  //updates post
 })
 
 
