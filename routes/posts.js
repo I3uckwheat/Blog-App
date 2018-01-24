@@ -1,5 +1,5 @@
 var express = require('express');
-var post = require("../models/posts")
+const postController = require("../controllers/postsController.js")
 var router = express.Router();
 
 /*Get Post list. */
@@ -17,10 +17,7 @@ router.get('/:id', function(req, res) {
   res.send(req.params)
 });
 
-router.post('/', post.newPost, function(req, res) {
-  console.log(req.params)
-  res.send(req.postId)
-});
+router.post('/', postController.createPost); // <<<< correct one
 
 router.get('/:id/edit', function(req, res) {
   //show page to edit post

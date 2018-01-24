@@ -10,14 +10,11 @@ mongoose.Promise = global.Promise;
   }));
 
 module.exports = {
-  newPost(req, res, next){
-    post = new Post ({
-      title: req.params.postTitle,
-      author: req.params.postAuthor,
-      body: req.params.postBody
-       })
-    post.save()
-    req.postId = post["_id"];
-    next();
+  createPost(requestParams){
+    console.log(requestParams)
+    const post = new Post({
+      requestParams
+    })
+    return post
   }
 }

@@ -6,11 +6,11 @@ block content
   div.postContent
     form(action="/posts", method="post")
       label(for = "postTitle") Title:
-      input#postTitle(type="text" name="postTitle")
+      input#postTitle(type="text" name="title")
       br
       label(for="postAuthor") Author:
-      input#postAuthor(type="text" name="postAuthor")
+      input#postAuthor(type="text" name="author")
       br
-      label(for="postBody") Body:
+      label(for="body") Body:
       textarea#postBody(name="postBody", cols="30", rows="10")
       input(type="submit", value="Submit")
