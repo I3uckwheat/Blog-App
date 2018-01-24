@@ -3,20 +3,24 @@ var post = require("../models/posts")
 var router = express.Router();
 
 /*Get Post list. */
-router.get('/', function(req, res, next) {
-  res.render('posts/index', { title: 'Express' });
+router.get('/', function(req, res) {
+  res.render('posts/index', {
+    //json object with titles of posts
+  });
 });
 
 router.get('/new', function(req, res){
-  //show's page for new post
+  res.render('posts/new')
 })
 
 router.get('/:id', function(req, res) {
-  //get specific post by ID
+  res.send(req.params.id) //to test
 });
 
 router.post('/', function(req, res) {
-  //create new post and open
+  const something = post.newPost(req.body.postTitle, req.body.postBody, req.body.postAuthor)
+  res.send(something)
+  // res.render(`posts/index/${id}`)
 });
 
 router.get('/:id/edit', function(req, res) {
@@ -26,5 +30,6 @@ router.get('/:id/edit', function(req, res) {
 router.put('/:id', function(req, res) {
   //update post
 })
+
 
 module.exports = router;
