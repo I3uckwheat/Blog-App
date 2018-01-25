@@ -1,4 +1,4 @@
-var postModel = require("../models/posts")
+var postModel = require("../models/postsModel")
 
 module.exports = {
   index(req, res) {
