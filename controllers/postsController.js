@@ -1,9 +1,23 @@
 var postModel = require("../models/posts")
 
 module.exports = {
+  index(req, res) {
+    res.render('posts/index')
+  },
+  newPost(req, res) {
+    res.render('posts/new')
+  },
+  getPost(req, res) {
+    res.send(req.params) //gets post by id
+  },
   createPost(req, res) {
     const post = postModel.createPost(req.body)
-    console.log(post["_id"])
-    res.redirect("/posts")
+    res.redirect(`/posts/${id}`)
+  },
+  editPost(req, res) {
+    res.send("Edit post page  ID: " + req.params.id)
+  },
+  updatePost(req,res) {
+    res.send("UpdatePost controller") // redirect to getPost of ID
   }
 }

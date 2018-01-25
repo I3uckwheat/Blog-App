@@ -2,30 +2,17 @@ var express = require('express');
 const postController = require("../controllers/postsController.js")
 var router = express.Router();
 
-/*Get Post list. */
-router.get('/', function(req, res) {
-  res.render('posts/index', {
-    //json object with titles of posts
-  });
-});
+router.get('/', postController.index)
 
-router.get('/new', function(req, res){
-  res.render('posts/new')
-})
+router.get('/new', postController.newPost)
 
-router.get('/:id', function(req, res) {
-  res.send(req.params)
-});
+router.get('/:id', postController.getPost)
 
-router.post('/', postController.createPost); // <<<< correct one
+router.post('/', postController.createPost)
 
-router.get('/:id/edit', function(req, res) {
-  //show page to edit post
-});
+router.get('/:id/edit', postController.editPost)
 
-router.put('/:id', function(req, res) {
-  //updates post
-})
+router.put('/:id', postController.updatePost)
 
 
 module.exports = router;
