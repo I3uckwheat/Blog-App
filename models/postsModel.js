@@ -16,5 +16,10 @@ module.exports = {
       requestParams
     })
     return post
+  },
+  getPosts(){
+    Post.find({}, (err, posts) => {
+      return posts
+    })
   }
 }

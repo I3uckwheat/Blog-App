@@ -2,7 +2,10 @@ var postModel = require("../models/postsModel")
 
 module.exports = {
   index(req, res) {
-    res.render('posts/index')
+    console.log(postModel.getPosts())
+    res.render('posts/index', {
+      posts: postModel.getPosts()
+    })
   },
   newPost(req, res) {
     res.render('posts/new')
